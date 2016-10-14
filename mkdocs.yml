@@ -1,0 +1,8 @@
+site_name: Rosita
+pages:
+- Home: index.md
+- Configuration : configuration.md
+- Dependency Injection: di.md
+- Database Patterns: databasepatterns.md
+- Future Work: future.md
+theme: readthedocs

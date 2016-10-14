@@ -1,0 +1,99 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Wellcome to Rosita\n\n\nRosita is a microservice sample project done in dot net core.\n\n\nHow to Work with Rosita\n\n\nRosita is designed with the clean architecture philosophy in mind. \n\n\nThe tech stack used for build this solution:\n  - Asp.net core\n  - EntityFramework core\n\n\nSolution layout\n\n\n/API\n    Rosita.Invoice.API.Service      # The Rest API endpoint\n    Rosita.Invoice.API.DtoMessages  # The Request/Response Messages for the Rest API\n/Core\n    Rosita.Invoice.Core             # The Bussiness Logic of the application.\n    Rosita.Invoice.Framework        # Base classess and Clean Architecture guidance patterns.\n/Infrastructure\n    Rosita.Infrastructure.Database  # All the plumbing related Database/Entity Framework code.\nRosita.XCutting                     # A set of CrossCutting concerns needed for the application design.\n\n\n\nTesting\n\n\nRosita has been built with Testing in mind, at the moment, whe have test the first UseCase. \nAll the testing is doing with the EntityFramework InMemory Database.",
+            "title": "Home"
+        },
+        {
+            "location": "/#wellcome-to-rosita",
+            "text": "Rosita is a microservice sample project done in dot net core.",
+            "title": "Wellcome to Rosita"
+        },
+        {
+            "location": "/#how-to-work-with-rosita",
+            "text": "Rosita is designed with the clean architecture philosophy in mind.   The tech stack used for build this solution:\n  - Asp.net core\n  - EntityFramework core",
+            "title": "How to Work with Rosita"
+        },
+        {
+            "location": "/#solution-layout",
+            "text": "/API\n    Rosita.Invoice.API.Service      # The Rest API endpoint\n    Rosita.Invoice.API.DtoMessages  # The Request/Response Messages for the Rest API\n/Core\n    Rosita.Invoice.Core             # The Bussiness Logic of the application.\n    Rosita.Invoice.Framework        # Base classess and Clean Architecture guidance patterns.\n/Infrastructure\n    Rosita.Infrastructure.Database  # All the plumbing related Database/Entity Framework code.\nRosita.XCutting                     # A set of CrossCutting concerns needed for the application design.",
+            "title": "Solution layout"
+        },
+        {
+            "location": "/#testing",
+            "text": "Rosita has been built with Testing in mind, at the moment, whe have test the first UseCase. \nAll the testing is doing with the EntityFramework InMemory Database.",
+            "title": "Testing"
+        },
+        {
+            "location": "/configuration/",
+            "text": "Configuration\n\n\nThe main Configuration file in Rosita is AppSettings.json\nHere you have a brief sample:\n\n\n{\n  \"Logging\": {\n    \"IncludeScopes\": false,\n    \"LogLevel\": {\n      \"Default\": \"Verbose\",\n      \"System\": \"Information\",\n      \"Microsoft\": \"Information\"\n    }\n  },\n  \"Smtp\": {\n    \"Server\": \"0.0.0.1\",\n    \"User\": \"user@company.com\",\n    \"Pass\": \"123456789\",\n    \"Port\": \"25\"\n  },\n  \"Databases\": {\n    \"MainConnectionString\": \"data source=.\\\\sqlexpress;initial catalog=Invoices;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework\",\n    \"LogsConnectionString\": \"FakeDb2\",\n    \"MailConnectionString\": \"FakeDb3\"\n  }\n}\n\n\n\n\nThis file is included in the project \nRosita.Invoice.Api.Service\n and every time you build the project, the file is copied with the output. \n\n\nDatabase section\n\n\nif the \nMainConnectionString\n is not set, the aplication works in Memory Mode, and no need database.",
+            "title": "Configuration"
+        },
+        {
+            "location": "/configuration/#configuration",
+            "text": "The main Configuration file in Rosita is AppSettings.json\nHere you have a brief sample:  {\n  \"Logging\": {\n    \"IncludeScopes\": false,\n    \"LogLevel\": {\n      \"Default\": \"Verbose\",\n      \"System\": \"Information\",\n      \"Microsoft\": \"Information\"\n    }\n  },\n  \"Smtp\": {\n    \"Server\": \"0.0.0.1\",\n    \"User\": \"user@company.com\",\n    \"Pass\": \"123456789\",\n    \"Port\": \"25\"\n  },\n  \"Databases\": {\n    \"MainConnectionString\": \"data source=.\\\\sqlexpress;initial catalog=Invoices;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework\",\n    \"LogsConnectionString\": \"FakeDb2\",\n    \"MailConnectionString\": \"FakeDb3\"\n  }\n}  This file is included in the project  Rosita.Invoice.Api.Service  and every time you build the project, the file is copied with the output.",
+            "title": "Configuration"
+        },
+        {
+            "location": "/configuration/#database-section",
+            "text": "if the  MainConnectionString  is not set, the aplication works in Memory Mode, and no need database.",
+            "title": "Database section"
+        },
+        {
+            "location": "/di/",
+            "text": "Dependency Injection\n\n\nFor this development we have choose SimpleInjector as IoC Framework. It's elegant, simple and have a good performance.\n\n\nComposition\n\n\nEvery project of the solution have a Composition.cs with a Setup Method, that configures the Dependecy Injection Container. \nAlso, in the Crosscutting layer we have a Service Locator Antipattern implemented. This Service locator is used only for two things:\n  - Resolve some dependencies in Tests Projects (for pragmatical reasons).\n  - Resolve some dependencies in Mapping Process.\n\n\nLifeStyles\n\n\nThere are 3 main Lifestyles configured in the aplication:\n   - AspNetRequestLifestyle \n   - Transient\n   - Singleton\n\n\nWe only use singleton for mapping factories (combined with a flyweight pattern like an object mapping cache).\n   The AspNetRequestLifeStyle is the most common lifestyle configuration in the application (is the best approach in an Asp.Net application for thread-safe and garbagecollector reasons).\n   Transient is commonly used in Testing, and we have tuned the dependency registration process avoiding the warnings in DbContext and UnitOfWork disposable events.",
+            "title": "Dependency Injection"
+        },
+        {
+            "location": "/di/#dependency-injection",
+            "text": "For this development we have choose SimpleInjector as IoC Framework. It's elegant, simple and have a good performance.",
+            "title": "Dependency Injection"
+        },
+        {
+            "location": "/di/#composition",
+            "text": "Every project of the solution have a Composition.cs with a Setup Method, that configures the Dependecy Injection Container. \nAlso, in the Crosscutting layer we have a Service Locator Antipattern implemented. This Service locator is used only for two things:\n  - Resolve some dependencies in Tests Projects (for pragmatical reasons).\n  - Resolve some dependencies in Mapping Process.",
+            "title": "Composition"
+        },
+        {
+            "location": "/di/#lifestyles",
+            "text": "There are 3 main Lifestyles configured in the aplication:\n   - AspNetRequestLifestyle \n   - Transient\n   - Singleton  We only use singleton for mapping factories (combined with a flyweight pattern like an object mapping cache).\n   The AspNetRequestLifeStyle is the most common lifestyle configuration in the application (is the best approach in an Asp.Net application for thread-safe and garbagecollector reasons).\n   Transient is commonly used in Testing, and we have tuned the dependency registration process avoiding the warnings in DbContext and UnitOfWork disposable events.",
+            "title": "LifeStyles"
+        },
+        {
+            "location": "/databasepatterns/",
+            "text": "Database Patterns\n\n\nWe think one of the best approach working with databases is the combo Unit of Work / Generic Repository.\n\n\nDatabase Entities\n\n\nAll the database entities have an inheritance with the Base class BaseDao that defines a Standar convention of work with the primary key.\n\n\nMapping Configuration\n\n\nEach Entity has his mapping configuration in the \nMappings\n folder. Every Mapping class is configured using the Entity framework FluentApi.\n\n\nUnit Of Work\n\n\nWe have a Unit Of Work Approach with the base contract IUnitOfWork.\nAlso we have a IBussinessUnitOfWork that group all the repositories that can participate in the context transaction.",
+            "title": "Database Patterns"
+        },
+        {
+            "location": "/databasepatterns/#database-patterns",
+            "text": "We think one of the best approach working with databases is the combo Unit of Work / Generic Repository.",
+            "title": "Database Patterns"
+        },
+        {
+            "location": "/databasepatterns/#database-entities",
+            "text": "All the database entities have an inheritance with the Base class BaseDao that defines a Standar convention of work with the primary key.",
+            "title": "Database Entities"
+        },
+        {
+            "location": "/databasepatterns/#mapping-configuration",
+            "text": "Each Entity has his mapping configuration in the  Mappings  folder. Every Mapping class is configured using the Entity framework FluentApi.",
+            "title": "Mapping Configuration"
+        },
+        {
+            "location": "/databasepatterns/#unit-of-work",
+            "text": "We have a Unit Of Work Approach with the base contract IUnitOfWork.\nAlso we have a IBussinessUnitOfWork that group all the repositories that can participate in the context transaction.",
+            "title": "Unit Of Work"
+        },
+        {
+            "location": "/future/",
+            "text": "Future Work\n\n\nWe thing that it would be great to implement:\n    - Integration test.\n    - Logging\n    - Exception Handling\n    - Caching (Normal Caching and Distributed)\n    - UseCase Command Executor (With policies, circuitbreaker behaviour, Auditory).\n    - Queue (for pub/sub comunication with other microservices, with at least 2 providers, Azure Service Bus and RabbitMQ).\n    - OAuth (Using Identity Server).\n    - NoSQL Databases support (Mongo/Raven/AzureTableStorage)",
+            "title": "Future Work"
+        },
+        {
+            "location": "/future/#future-work",
+            "text": "We thing that it would be great to implement:\n    - Integration test.\n    - Logging\n    - Exception Handling\n    - Caching (Normal Caching and Distributed)\n    - UseCase Command Executor (With policies, circuitbreaker behaviour, Auditory).\n    - Queue (for pub/sub comunication with other microservices, with at least 2 providers, Azure Service Bus and RabbitMQ).\n    - OAuth (Using Identity Server).\n    - NoSQL Databases support (Mongo/Raven/AzureTableStorage)",
+            "title": "Future Work"
+        }
+    ]
+}
