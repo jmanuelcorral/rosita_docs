@@ -87,12 +87,12 @@
         },
         {
             "location": "/future/",
-            "text": "Future Work\n\n\nWe thing that it would be great to implement:\n    - Integration test.\n    - Logging\n    - Exception Handling\n    - Caching (Normal Caching and Distributed)\n    - UseCase Command Executor (With policies, circuitbreaker behaviour, Auditory).\n    - Queue (for pub/sub comunication with other microservices, with at least 2 providers, Azure Service Bus and RabbitMQ).\n    - OAuth (Using Identity Server).\n    - NoSQL Databases support (Mongo/Raven/AzureTableStorage)",
+            "text": "Future Work\n\n\nWe thing that it would be great to implement:\n\n\n\n\nIntegration test.\n\n\nLogging\n\n\nException Handling\n\n\nCaching (Normal Caching and Distributed)\n\n\nUseCase Command Executor (With policies, circuitbreaker behaviour, Auditory).\n\n\nQueue (for pub/sub comunication with other microservices, with at least 2 providers, Azure Service Bus and RabbitMQ).\n\n\nOAuth (Using Identity Server).\n\n\nNoSQL Databases support (Mongo/Raven/AzureTableStorage)",
             "title": "Future Work"
         },
         {
             "location": "/future/#future-work",
-            "text": "We thing that it would be great to implement:\n    - Integration test.\n    - Logging\n    - Exception Handling\n    - Caching (Normal Caching and Distributed)\n    - UseCase Command Executor (With policies, circuitbreaker behaviour, Auditory).\n    - Queue (for pub/sub comunication with other microservices, with at least 2 providers, Azure Service Bus and RabbitMQ).\n    - OAuth (Using Identity Server).\n    - NoSQL Databases support (Mongo/Raven/AzureTableStorage)",
+            "text": "We thing that it would be great to implement:   Integration test.  Logging  Exception Handling  Caching (Normal Caching and Distributed)  UseCase Command Executor (With policies, circuitbreaker behaviour, Auditory).  Queue (for pub/sub comunication with other microservices, with at least 2 providers, Azure Service Bus and RabbitMQ).  OAuth (Using Identity Server).  NoSQL Databases support (Mongo/Raven/AzureTableStorage)",
             "title": "Future Work"
         }
     ]
